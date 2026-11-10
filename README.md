@@ -6,7 +6,7 @@
 >
 > This repository is frozen as a learning/verification record of the simulation stack on Ubuntu 24.04 / ROS 2 Jazzy. The four-package simulation chain described below (`eai_bot` perception + `mbot_description` / `mbot_gazebo` / `mbot_navigation`) reflects the state at the end of the simulation phase.
 >
-> Commits after the simulation phase added hardware-integration experiment packages — `mbot_lidar_ros2`, `mbot_robot_msg`, `mbot_robot_slam`, `mbot_robot_urdf`, `turn_on_mbot_robot` — targeting an Ubuntu 22.04 physical robot. They are kept for reference only and are **not** maintained in this repository.
+> Commits after the simulation phase added hardware-integration experiment packages — `bringup`、`depend`、`description`、`lidar`、`navigation2-humble`、`robot_msgs`、`slam` — targeting an Ubuntu 22.04 physical robot. They are kept for reference only and are **not** maintained in this repository.
 >
 > Active physical-robot development continues in a separate repository: kyshipit/dragonli-prowl.
 
@@ -96,12 +96,12 @@ mbot-sim/                         # colcon workspace
 │   ├── eai_bot/                  # Perception: YOLO/SCRFD/LLM/TTS (RK3588)
 │   ├── mbot_description/         # Simulation: URDF/xacro + TF tree
 │   ├── mbot_gazebo/              # Simulation: Gazebo simulation + ros2_control differential drive
-│   ├── mbot_lidar_ros2/          # Hardware integration experiment: lidar drivers (LD06/LD14/LSLidar)
 │   ├── mbot_navigation/          # Simulation: Nav2 navigation parameters and launch
-│   ├── mbot_robot_msg/           # Hardware integration experiment: custom messages
-│   ├── mbot_robot_slam/          # Hardware integration experiment: SLAM (cartographer/slam_toolbox/orb-slam2)
-│   ├── mbot_robot_urdf/          # Hardware integration experiment: physical robot URDF/meshes/rviz
-│   └── turn_on_mbot_robot/       # Hardware integration experiment: physical robot launch
+│   ├── lidar/                    # Hardware integration experiment: lidar drivers (LD06/LD14/LSLidar)
+│   ├── robot_msgs/               # Hardware integration experiment: custom messages
+│   ├── slam/                     # Hardware integration experiment: SLAM (cartographer/slam_toolbox/orb-slam2)
+│   ├── description/              # Hardware integration experiment: physical robot URDF/meshes/rviz
+│   └── bringup/                  # Hardware integration experiment: physical robot launch
 ├── model/                        # RKNN/RKLLM inference models
 ├── docs/                         # eai_bot and platform docs
 ├── tools/                        # Configuration validation and model check scripts
