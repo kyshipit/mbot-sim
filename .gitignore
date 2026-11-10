@@ -1,0 +1,35 @@
+bak/*
+# 大二进制 / 可下载资源
+src/slam/orb_slam_2_ros-ros2/orb_slam2/Vocabulary/ORBvoc.txt.tar.gz
+
+# 屏蔽OpenCV无用平台（安卓+32位ARM）
+**/runtime/3rdparty/opencv/opencv-android-sdk-build/
+**/runtime/3rdparty/opencv/opencv-linux-armhf/
+**/runtime/3rdparty/opencv/opencv-linux-aarch64/share/
+**/**/opencv-android-sdk-build/
+**/**/opencv-linux-armhf/
+**/Android/**
+
+**/*.a
+**/*.so
+**/*.so.*
+
+# 屏蔽编译产物
+**/*.o
+build/
+install/
+log/
+
+# 屏蔽CMake缓存
+CMakeFiles/
+install_manifest.txt
+*.pyc
+__pycache__/
+*.pt
+*.pth
+*.bin
+*.param
+.clinerules/*
+
+# xacro 展开/校验产生的临时 URDF 输出
+out.urdf
