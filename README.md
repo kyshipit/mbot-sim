@@ -8,7 +8,7 @@
 >
 > Commits after the simulation phase added hardware-integration experiment packages — `bringup`、`depend`、`description`、`lidar`、`navigation2-humble`、`robot_msgs`、`slam` — targeting an Ubuntu 22.04 physical robot. They are kept for reference only and are **not** maintained in this repository.
 >
-> Active physical-robot development continues in a separate repository: kyshipit/dragonli-prowl.
+> Active physical-robot development continues in a separate repository: kyshipit/tabby-ros2
 
 This repository records the simulation navigation verification of a two-wheel differential-drive robot in Gazebo Harmonic: the model and coordinate frames are defined by `mbot_description`, the closed-loop differential drive is implemented by `mbot_gazebo`, and navigation and obstacle avoidance are provided by `mbot_navigation`. The perception side, `eai_bot`, is a vision/dialogue/TTS inference platform running on the RK3588 development board and meets the simulation chain at the TF level via ROS2 topics.
 
@@ -18,10 +18,10 @@ This repository records the simulation navigation verification of a two-wheel di
 
 | Package                                            | Subsystem               | Responsibility                                               | Hardware dependency      |
 | :- | :---- | :----- | :----- |
-| [`eai_bot`](https://src/eai_bot)                   | Perception              | YOLO/SCRFD detection, RKLLM dialogue, TTS speech; publishes `/eai/detections/*` | RK3588 development board |
-| [`mbot_description`](https://src/mbot_description) | Simulation · Model      | Two-wheel differential-drive chassis URDF/xacro + TF tree; RViz visualization | None (pure geometry)     |
-| [`mbot_gazebo`](https://src/mbot_gazebo)           | Simulation · Drive      | Gazebo Harmonic simulation; `/cmd_vel` → differential drive → `/odom` + TF + lidar/IMU | None (pure simulation)   |
-| [`mbot_navigation`](https://src/mbot_navigation)   | Simulation · Navigation | Full Nav2 stack (SLAM + AMCL + NavFn/MPPI + costmap); obstacle-avoiding 2D Goal Pose navigation | None (pure simulation)   |
+| [`eai_bot`](src/eai_bot)                   | Perception              | YOLO/SCRFD detection, RKLLM dialogue, TTS speech; publishes `/eai/detections/*` | RK3588 development board |
+| [`mbot_description`](src/mbot_description) | Simulation · Model      | Two-wheel differential-drive chassis URDF/xacro + TF tree; RViz visualization | None (pure geometry)     |
+| [`mbot_gazebo`](src/mbot_gazebo)           | Simulation · Drive      | Gazebo Harmonic simulation; `/cmd_vel` → differential drive → `/odom` + TF + lidar/IMU | None (pure simulation)   |
+| [`mbot_navigation`](src/mbot_navigation)   | Simulation · Navigation | Full Nav2 stack (SLAM + AMCL + NavFn/MPPI + costmap); obstacle-avoiding 2D Goal Pose navigation | None (pure simulation)   |
 
 The remaining 5 hardware-integration experiment packages are listed in the repository structure below and are not maintained in this repository.
 
@@ -48,7 +48,7 @@ Simulation navigation is composed of three packages in sequence: `mbot_descripti
 ros2 run eai_bot eai_bot_app
 ```
 
-For detailed configuration, message topics, and gating logic, see [`docs/`](https://docs/) (e.g., `architecture-and-runtime.md`).
+For detailed configuration, message topics, and gating logic, see [`docs/`](docs/) (e.g., `architecture-and-runtime.md`).
 
 ### Simulation Navigation (mbot_*, x86 + ROS2 Jazzy + Gazebo Harmonic)
 

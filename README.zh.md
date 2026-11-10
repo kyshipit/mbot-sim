@@ -8,7 +8,7 @@
 >
 > 仿真阶段之后的提交新增了面向 Ubuntu 22.04 实物机器人的硬件集成试验包——`bringup`、`depend`、`description`、`lidar`、`navigation2-humble`、`robot_msgs`、`slam`——仅作参考保留，**不在本仓维护**。
 >
-> 实物机器人开发主线已迁至独立仓库：kyshipit/dragonli-prowl。
+> 实物机器人开发主线已迁至独立仓库：kyshipit/tabby-ros2
 
 本仓记录两轮差速机器人在 Gazebo Harmonic 中的仿真导航验证：模型与坐标系由 `mbot_description` 定义，差速驱动闭环由 `mbot_gazebo` 实现，导航与避障由 `mbot_navigation` 提供；感知侧 `eai_bot` 为运行在 RK3588 开发板上的视觉/对话/TTS 推理平台，与仿真链路通过 ROS2 话题在 TF 层面汇合。
 
@@ -18,10 +18,10 @@
 
 | 包                                                 | 子系统    | 职责                                                         | 依赖硬件      |
 | :------------------------------------------------- | :-------- | :----------------------------------------------------------- | :------------ |
-| [`eai_bot`](https://src/eai_bot)                   | 感知      | YOLO/SCRFD 检测、RKLLM 对话、TTS 语音，发布 `/eai/detections/*` | RK3588 开发板 |
-| [`mbot_description`](https://src/mbot_description) | 仿真·模型 | 两轮差速底盘 URDF/xacro + TF 树，RViz 可视化                 | 无（纯几何）  |
-| [`mbot_gazebo`](https://src/mbot_gazebo)           | 仿真·驱动 | Gazebo Harmonic 仿真，`/cmd_vel` → 差速 → `/odom` + TF + 激光/IMU | 无（纯仿真）  |
-| [`mbot_navigation`](https://src/mbot_navigation)   | 仿真·导航 | Nav2 全栈（SLAM + AMCL + NavFn/MPPI + costmap），2D Goal Pose 避障 | 无（纯仿真）  |
+| [`eai_bot`](src/eai_bot)                   | 感知      | YOLO/SCRFD 检测、RKLLM 对话、TTS 语音，发布 `/eai/detections/*` | RK3588 开发板 |
+| [`mbot_description`](src/mbot_description) | 仿真·模型 | 两轮差速底盘 URDF/xacro + TF 树，RViz 可视化                 | 无（纯几何）  |
+| [`mbot_gazebo`](src/mbot_gazebo)           | 仿真·驱动 | Gazebo Harmonic 仿真，`/cmd_vel` → 差速 → `/odom` + TF + 激光/IMU | 无（纯仿真）  |
+| [`mbot_navigation`](src/mbot_navigation)   | 仿真·导航 | Nav2 全栈（SLAM + AMCL + NavFn/MPPI + costmap），2D Goal Pose 避障 | 无（纯仿真）  |
 
 其余 5 个硬件集成试验包见下文仓库结构，不在本仓维护。
 
@@ -48,7 +48,7 @@ TTS 语音         ─┘                   ──> Nav2 导航（mbot_navigatio
 ros2 run eai_bot eai_bot_app
 ```
 
-详细配置、消息话题、门控逻辑见 [`docs/`](https://docs/)（`architecture-and-runtime.md` 等）。
+详细配置、消息话题、门控逻辑见 [`docs/`](docs/)（`architecture-and-runtime.md` 等）。
 
 ### 仿真导航（mbot_*，x86 + ROS2 Jazzy + Gazebo Harmonic）
 
