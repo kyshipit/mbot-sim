@@ -6,7 +6,7 @@
 >
 > 本仓冻结为 Ubuntu 24.04 / ROS 2 Jazzy 上仿真栈的学习与验证记录。下文描述的四包仿真链路（`eai_bot` 感知 + `mbot_description` / `mbot_gazebo` / `mbot_navigation`）为仿真阶段结束时的状态。
 >
-> 仿真阶段之后的提交新增了面向 Ubuntu 22.04 实物机器人的硬件集成试验包——`mbot_lidar_ros2`、`mbot_robot_msg`、`mbot_robot_slam`、`mbot_robot_urdf`、`turn_on_mbot_robot`——仅作参考保留，**不在本仓维护**。
+> 仿真阶段之后的提交新增了面向 Ubuntu 22.04 实物机器人的硬件集成试验包——`bringup`、`depend`、`description`、`lidar`、`navigation2-humble`、`robot_msgs`、`slam`——仅作参考保留，**不在本仓维护**。
 >
 > 实物机器人开发主线已迁至独立仓库：kyshipit/dragonli-prowl。
 
@@ -96,12 +96,12 @@ mbot-sim/                         # colcon 工作空间
 │   ├── eai_bot/                  # 感知：YOLO/SCRFD/LLM/TTS（RK3588）
 │   ├── mbot_description/         # 仿真：URDF/xacro + TF 树
 │   ├── mbot_gazebo/              # 仿真：Gazebo 仿真 + ros2_control 差速
-│   ├── mbot_lidar_ros2/          # 硬件集成试验：激光雷达驱动（LD06/LD14/LSLidar）
 │   ├── mbot_navigation/          # 仿真：Nav2 导航参数与 launch
-│   ├── mbot_robot_msg/           # 硬件集成试验：自定义消息
-│   ├── mbot_robot_slam/          # 硬件集成试验：SLAM（cartographer/slam_toolbox/orb-slam2）
-│   ├── mbot_robot_urdf/          # 硬件集成试验：实物 URDF/meshes/rviz
-│   └── turn_on_mbot_robot/       # 硬件集成试验：实物启动 launch
+│   ├── lidar/                    # 硬件集成试验：激光雷达驱动（LD06/LD14/LSLidar）
+│   ├── robot_msgs/               # 硬件集成试验：自定义消息
+│   ├── slam/                     # 硬件集成试验：SLAM（cartographer/slam_toolbox/orb-slam2）
+│   ├── description/              # 硬件集成试验：实物 URDF/meshes/rviz
+│   └── bringup/                  # 硬件集成试验：实物启动 launch
 ├── model/                        # RKNN/RKLLM 推理模型
 ├── docs/                         # eai_bot 与平台文档
 ├── tools/                        # 配置校验、模型检查脚本
